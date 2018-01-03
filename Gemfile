@@ -24,7 +24,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'launchy'
-  gem "factory_bot_rails", "~> 4.0"
+  gem 'factory_bot_rails'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
