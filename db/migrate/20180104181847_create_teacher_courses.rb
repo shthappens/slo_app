@@ -1,6 +1,6 @@
-class CreateTeacherClasses < ActiveRecord::Migration[5.1]
+class CreateTeacherCourses < ActiveRecord::Migration[5.1]
   def change
-    create_table :teacher_classes do |t|
+    create_table :teacher_courses do |t|
       t.belongs_to :teacher
       t.belongs_to :course
 
