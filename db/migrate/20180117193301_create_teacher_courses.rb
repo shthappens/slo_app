@@ -4,7 +4,7 @@ class CreateTeacherCourses < ActiveRecord::Migration[5.1]
       t.belongs_to :teacher
       t.belongs_to :course
 
-      t.timestamps
+      t.timestamp
     end
   end
 end

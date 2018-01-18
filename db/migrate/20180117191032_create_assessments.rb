@@ -2,10 +2,9 @@ class CreateAssessments < ActiveRecord::Migration[5.1]
   def change
     create_table :assessments do |t|
       t.belongs_to :teacher
-      t.belongs_to :student
-      t.string :name
+      t.belongs_to :student_assessment
 
-      t.timestamps
+      t.string :name
     end
   end
 end
