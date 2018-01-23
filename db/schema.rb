@@ -12,20 +12,23 @@
 
 ActiveRecord::Schema.define(version: 20180117193748) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assessments", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.integer "student_assessment_id"
+    t.bigint "teacher_id"
+    t.bigint "student_assessment_id"
     t.string "name"
     t.index ["student_assessment_id"], name: "index_assessments_on_student_assessment_id"
     t.index ["teacher_id"], name: "index_assessments_on_teacher_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.integer "teacher_class_id"
-    t.integer "student_course_id"
+    t.bigint "teacher_course_id"
+    t.bigint "student_course_id"
     t.string "name"
     t.index ["student_course_id"], name: "index_courses_on_student_course_id"
-    t.index ["teacher_class_id"], name: "index_courses_on_teacher_class_id"
+    t.index ["teacher_course_id"], name: "index_courses_on_teacher_course_id"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 20180117193748) do
   end
 
   create_table "student_assessments", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "assessment_id"
+    t.bigint "student_id"
+    t.bigint "assessment_id"
     t.string "pre_assessment_score"
     t.string "post_assessment_score"
     t.index ["assessment_id"], name: "index_student_assessments_on_assessment_id"
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 20180117193748) do
   end
 
   create_table "student_courses", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "course_id"
+    t.bigint "student_id"
+    t.bigint "course_id"
     t.index ["course_id"], name: "index_student_courses_on_course_id"
     t.index ["student_id"], name: "index_student_courses_on_student_id"
   end
@@ -66,17 +69,10 @@ ActiveRecord::Schema.define(version: 20180117193748) do
   end
 
   create_table "teacher_courses", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.integer "course_id"
+    t.bigint "teacher_id"
+    t.bigint "course_id"
     t.index ["course_id"], name: "index_teacher_courses_on_course_id"
     t.index ["teacher_id"], name: "index_teacher_courses_on_teacher_id"
-  end
-
-  create_table "teacher_schools", force: :cascade do |t|
-    t.integer "teacher_id"
-    t.integer "school_id"
-    t.index ["school_id"], name: "index_teacher_schools_on_school_id"
-    t.index ["teacher_id"], name: "index_teacher_schools_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
